@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:shop.transistorsoft.com)",
+      "Bash(node:*)",
+      "Bash(npm --version)",
+      "Bash(npx react-native:*)",
+      "Bash(npx @react-native-community/cli@13 init:*)",
+      "Read(//Users/munkyo/works/ai-code/BS/**)",
+      "Read(//private/tmp/**)",
+      "Bash(xargs sed:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(pod install)",
+      "Bash(tree:*)",
+      "Bash(npx tsc:*)",
+      "Bash(open ios/RunPort.xcworkspace)",
+      "Bash(xcodebuild:*)",
+      "Bash(xcrun simctl boot:*)",
+      "Bash(xcrun simctl install:*)",
+      "Bash(xcrun simctl launch:*)",
+      "Bash(xcrun simctl uninstall:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(xcrun xctrace:*)",
+      "Bash(open /Users/munkyo/works/ai-code/BS/run-port/ios/RunPort.xcworkspace)",
+      "Bash(brew install:*)",
+      "Bash(ios-deploy:*)",
+      "Bash(zip:*)",
+      "Read(//Users/munkyo/Downloads/**)",
+      "Bash(python3:*)",
+      "Bash(unzip:*)"
+    ]
+  },
+  "outputStyle": "Explanatory"
+}
