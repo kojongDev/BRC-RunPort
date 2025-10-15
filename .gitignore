@@ -1,10 +1,44 @@
-# OSX
-#
+# OS
 .DS_Store
+Thumbs.db
 
-# Xcode
-#
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node / Caches
+node_modules/
+.cache/
+.tmp/
+.rnx/
+
+# Metro
+.metro-cache/
+
+# React Native
+.rncache/
+dist/
 build/
+
+# Watchman
+.watchman/
+
+# Coverage
+coverage/
+
+# Env
+.env
+.env.*.local
+.env.local
+
+# iOS
+ios/build/
+ios/DerivedData/
+ios/Pods/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -13,58 +47,29 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata
+xcuserdata/
+*.xcuserstate
 *.xccheckout
 *.moved-aside
-DerivedData
-*.hmap
-*.ipa
-*.xcuserstate
-**/.xcode.env.local
+
+# Xcode workspaces (user data)
+**/*.xcworkspace/xcuserdata/
+**/*.xcodeproj/project.xcworkspace/xcuserdata/
 
 # Android
-#
-build/
-.idea
-.gradle
-local.properties
-*.iml
-*.hprof
-.cxx/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/app/*.iml
+android/.settings/
+android/keystores/*
 *.keystore
-!debug.keystore
+*.jks
 
-# Node
-#
-node_modules/
-npm-debug.log
-yarn-error.log
-
-# fastlane
-#
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
-
-# Bundle artifacts
-*.jsbundle
-
-# Ruby / CocoaPods
-/ios/Pods/
-/vendor/bundle/
-
-# Temporary files created by Metro to check the health of the file watcher
-.metro-health-check*
-
-# testing
-/coverage
-
-# Yarn
-.yarn-integrity
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp

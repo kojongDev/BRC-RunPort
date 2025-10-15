@@ -7,7 +7,15 @@
  * @example formatDistance(5.12345) => "5.12"
  */
 export function formatDistance(distanceKm: number): string {
-  return distanceKm.toFixed(2);
+	if (
+		distanceKm === null ||
+		distanceKm === undefined ||
+		!isFinite(distanceKm)
+	) {
+		return "0.00";
+	}
+	// 1km 미만에서는 정밀도를 높여 3자리까지 표시 (0.001km = 1m)
+	return distanceKm < 1 ? distanceKm.toFixed(3) : distanceKm.toFixed(2);
 }
 
 /**
@@ -15,13 +23,13 @@ export function formatDistance(distanceKm: number): string {
  * @example formatDuration(3665) => "01:01:05"
  */
 export function formatDuration(seconds: number): string {
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = Math.floor(seconds % 60);
+	const hours = Math.floor(seconds / 3600);
+	const minutes = Math.floor((seconds % 3600) / 60);
+	const secs = Math.floor(seconds % 60);
 
-  return [hours, minutes, secs]
-    .map(val => (val < 10 ? `0${val}` : `${val}`))
-    .join(':');
+	return [hours, minutes, secs]
+		.map((val) => (val < 10 ? `0${val}` : `${val}`))
+		.join(":");
 }
 
 /**
@@ -29,14 +37,27 @@ export function formatDuration(seconds: number): string {
  * @example formatPace(5.5) => "5:30"
  */
 export function formatPace(paceMinPerKm: number): string {
-  if (!isFinite(paceMinPerKm) || paceMinPerKm <= 0) {
-    return '0:00';
-  }
+	if (!isFinite(paceMinPerKm) || paceMinPerKm <= 0) {
+		return "0:00";
+	}
 
-  const minutes = Math.floor(paceMinPerKm);
-  const seconds = Math.floor((paceMinPerKm - minutes) * 60);
+	const minutes = Math.floor(paceMinPerKm);
+	const seconds = Math.floor((paceMinPerKm - minutes) * 60);
 
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+	return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+}
+
+/**
+ * 평균 페이스 전용 포맷팅 (30분/km 이상이면 "--:--")
+ */
+export function formatAvgPace(paceMinPerKm: number): string {
+	if (!isFinite(paceMinPerKm) || paceMinPerKm <= 0) {
+		return "0:00";
+	}
+	if (paceMinPerKm >= 30) {
+		return "--:--";
+	}
+	return formatPace(paceMinPerKm);
 }
 
 /**
@@ -45,15 +66,15 @@ export function formatPace(paceMinPerKm: number): string {
  * @param durationSeconds 시간 (초)
  */
 export function calculatePace(
-  distanceKm: number,
-  durationSeconds: number,
+	distanceKm: number,
+	durationSeconds: number
 ): number {
-  if (distanceKm === 0 || durationSeconds === 0) {
-    return 0;
-  }
+	if (distanceKm === 0 || durationSeconds === 0) {
+		return 0;
+	}
 
-  // 분/km = (시간 분) / (거리 km)
-  return durationSeconds / 60 / distanceKm;
+	// 분/km = (시간 분) / (거리 km)
+	return durationSeconds / 60 / distanceKm;
 }
 
 /**
@@ -61,28 +82,28 @@ export function calculatePace(
  * @example formatCalories(123.45) => "123"
  */
 export function formatCalories(calories: number): string {
-  return Math.round(calories).toString();
+	return Math.round(calories).toString();
 }
 
 /**
  * 날짜를 "YYYY.MM.DD HH:MM" 형식으로 포맷팅
  */
 export function formatDateTime(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
+	const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, "0");
+	const day = String(date.getDate()).padStart(2, "0");
+	const hours = String(date.getHours()).padStart(2, "0");
+	const minutes = String(date.getMinutes()).padStart(2, "0");
 
-  return `${year}.${month}.${day} ${hours}:${minutes}`;
+	return `${year}.${month}.${day} ${hours}:${minutes}`;
 }
 
 /**
  * 날짜를 "MM월 DD일" 형식으로 포맷팅
  */
 export function formatDate(date: Date): string {
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
+	const month = date.getMonth() + 1;
+	const day = date.getDate();
 
-  return `${month}월 ${day}일`;
+	return `${month}월 ${day}일`;
 }

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>RunPort</string>
+	<string>BRC</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -35,14 +35,21 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>러닝 중 현재 위치를 표시하기 위해 위치 권한이 필요합니다</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>러닝 경로를 추적하기 위해 백그라운드에서도 위치 권한이 필요합니다</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>러닝 경로를 추적하기 위해 위치 권한이 필요합니다</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>러닝 중 현재 위치를 표시하기 위해 위치 권한이 필요합니다</string>
 	<key>NSMotionUsageDescription</key>
 	<string>러닝 활동을 추적하기 위해 모션 데이터 권한이 필요합니다</string>
+  
+  <!-- iOS 14+ 임시 정밀 위치 권한 목적 문자열 매핑 -->
+  <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+  <dict>
+    <key>FitnessTracking</key>
+    <string>러닝 경로를 정확하게 추적하기 위해 일시적으로 정밀 위치가 필요합니다.</string>
+  </dict>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
@@ -58,8 +65,12 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

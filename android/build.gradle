@@ -1,0 +1,30 @@
+buildscript {
+    ext {
+        buildToolsVersion = "34.0.0"
+        ndkVersion = "26.1.10909125"
+        kotlinVersion = "1.9.24"
+        minSdkVersion 		= 24	      // Required minimum
+        targetSdkVersion 	= 35          // Or as-desired.
+        compileSdkVersion 	= 34          // Or as-desired
+        appCompatVersion 	= "1.4.2"      // Or higher.  Required for new AndroidX compatibility.
+        googlePlayServicesLocationVersion = "21.0.1"  // Or higher.
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    }
+}
+
+allprojects {   // <-- NOTE:  allprojects container -- If you don't see this, create it.
+    repositories {
+        maven { url("${project(':react-native-background-geolocation').projectDir}/libs") }
+        maven { url("${project(':react-native-background-fetch').projectDir}/libs") }
+    }
+}
+
+apply plugin: "com.facebook.react.rootproject"
